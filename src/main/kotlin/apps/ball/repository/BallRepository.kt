@@ -6,6 +6,7 @@ import apps.ball.resources.MAX_RADIUS
 import apps.ball.resources.MIN_RADIUS
 import apps.ball.resources.RED
 import apps.ball.resources.WIDTH
+import processing.core.PApplet.constrain
 import processing.core.PApplet.dist
 
 data class BallRepository(
@@ -13,23 +14,29 @@ data class BallRepository(
     val safeAreaSize: Float = 200f,
 ) {
     private val width = WIDTH
-    private val height = HEIGHT - safeAreaSize
+    private val height = HEIGHT
+    private val minX: Int = 0
+    private val minY: Int = 0 + safeAreaSize.toInt()
 
     fun createRandomBall(color: Triple<Float, Float, Float> = RED) {
         val randomRadius = (MIN_RADIUS.toInt()..MAX_RADIUS.toInt()).random().toFloat()
         val ball = Ball(
             radius = randomRadius,
-            x = (0 + randomRadius.toInt()..(width - randomRadius).toInt()).random().toFloat(),
-            y = (0 + randomRadius.toInt()..(height - randomRadius).toInt()).random().toFloat(),
+            x = (minX + randomRadius.toInt()..(width - randomRadius).toInt()).random().toFloat(),
+            y = (minY + randomRadius.toInt()..(height - randomRadius).toInt()).random().toFloat(),
             ballColor = color,
         )
         balls.add(ball)
     }
 
-    fun createBallAt(x: Float, y: Float, color: Triple<Float, Float, Float> = RED) {
-        if (y <= safeAreaSize) return
+    fun createBallAt(x: Float, y: Float, radius: Float? = null, color: Triple<Float, Float, Float> = RED) {
+        val chosenRadius = (MIN_RADIUS.toInt()..MAX_RADIUS.toInt()).random().toFloat()
+        val requestedRadius =
+            radius?.let { constrain(it, 0f, 100f) }?.times(MAX_RADIUS - MIN_RADIUS)?.div(100f)?.plus(MIN_RADIUS)
+        val effectiveRadius = requestedRadius ?: chosenRadius
+        if (y - chosenRadius <= safeAreaSize) return
         val ball = Ball(
-            radius = (MIN_RADIUS.toInt()..MAX_RADIUS.toInt()).random().toFloat(),
+            radius = effectiveRadius,
             x = x,
             y = y,
             ballColor = color,
@@ -42,5 +49,9 @@ data class BallRepository(
             val distance = dist(x, y, ball.x, ball.y)
             distance < ball.radius
         }
+    }
+
+    fun clear() {
+        balls.clear()
     }
 }

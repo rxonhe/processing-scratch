@@ -17,7 +17,6 @@ class BallRunner : PApplet() {
     }
 
     override fun setup() {
-        ballRepository.createRandomBall()
     }
 
     override fun draw() {
@@ -42,8 +41,17 @@ class BallRunner : PApplet() {
 
     override fun mousePressed() {
         when (mouseButton) {
-            LEFT -> ballRepository.createBallAt(mouseX.toFloat(), mouseY.toFloat(), GREEN)
-            RIGHT -> ballRepository.removeBallAt(mouseX.toFloat(), mouseY.toFloat())
+            LEFT -> {
+                ballRepository.clear()
+                ballRepository.createBallAt(
+                    x = mouseX.toFloat(),
+                    y = mouseY.toFloat(),
+                    radius = slider.sliderValue,
+                    color = GREEN,
+                )
+            }
+
+            RIGHT -> ballRepository.removeBallAt(x = mouseX.toFloat(), y = mouseY.toFloat())
             else -> Unit
         }
     }

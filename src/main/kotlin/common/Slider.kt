@@ -12,7 +12,7 @@ class Slider(
     private var dragging: Boolean = false
     private val sliderWidth: Float = 10f
     private val sliderHeight: Float = 20f
-    private var sliderValue: Float = 50f
+    var sliderValue: Float = 50f
 
     fun show(p: PApplet) {
         p.stroke(0)
@@ -25,7 +25,7 @@ class Slider(
 
         p.fill(0)
         p.textAlign(PApplet.CENTER, PApplet.CENTER)
-        sliderValue = getValue() * 100
+        sliderValue = mapForValue() * 100
         p.text(sliderValue.toInt().toString(), centerX, centerY - height)
     }
 
@@ -43,7 +43,7 @@ class Slider(
         }
     }
 
-    fun getValue(): Float {
+    private fun mapForValue(): Float {
         return PApplet.map(position, centerX - width / 2, centerX + width / 2, 0f, 1f)
     }
 }
