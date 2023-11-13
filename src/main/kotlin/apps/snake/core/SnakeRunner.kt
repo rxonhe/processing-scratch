@@ -1,9 +1,9 @@
-package snake.core
+package apps.snake.core
 
 import processing.core.PApplet
-import snake.model.Grid
-import snake.model.Snake
-import snake.repository.SnakeFoodRepository
+import apps.snake.model.Grid
+import apps.snake.model.Snake
+import apps.snake.repository.SnakeFoodRepository
 
 class SnakeRunner : PApplet() {
     private val grid = Grid(height = 600f, width = 600f, cellSize = 20f)

@@ -1,4 +1,4 @@
-package snake.model
+package apps.snake.model
 
 import processing.core.PApplet
 

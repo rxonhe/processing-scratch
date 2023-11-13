@@ -1,4 +1,4 @@
-import ball.BallRunner
+import apps.ball.BallRunner
 import processing.core.PApplet
 
 fun main() {

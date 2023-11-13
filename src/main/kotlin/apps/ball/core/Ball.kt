@@ -1,6 +1,6 @@
-package ball.core
+package apps.ball.core
 
-import ball.resources.RED
+import apps.ball.resources.RED
 import processing.core.PApplet
 
 data class Ball(

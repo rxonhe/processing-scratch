@@ -1,7 +1,7 @@
-package snake.repository
+package apps.snake.repository
 
 import processing.core.PApplet
-import snake.model.Grid
+import apps.snake.model.Grid
 
 data class SnakeFoodRepository(
     val gridReference: Grid,

@@ -1,8 +1,8 @@
-package snake.model
+package apps.snake.model
 
 import processing.core.PApplet
 import processing.core.PApplet.constrain
-import snake.repository.SnakeFoodRepository
+import apps.snake.repository.SnakeFoodRepository
 
 data class Snake(
     private val moveSpeed: Float,
