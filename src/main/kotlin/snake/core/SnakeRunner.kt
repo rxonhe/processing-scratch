@@ -3,12 +3,12 @@ package snake.core
 import processing.core.PApplet
 import snake.model.Grid
 import snake.model.Snake
-import snake.model.SnakeFoodRepository
+import snake.repository.SnakeFoodRepository
 
 class SnakeRunner : PApplet() {
-    private val grid = Grid(applet = this, height = 600f, width = 600f, cellSize = 20f)
-    private val snake = Snake(applet = this, moveSpeed = 20f)
-    private val snakeFoodRepository = SnakeFoodRepository(this, gridReference = grid)
+    private val grid = Grid(height = 600f, width = 600f, cellSize = 20f)
+    private val snake = Snake(moveSpeed = 20f)
+    private val snakeFoodRepository = SnakeFoodRepository(gridReference = grid)
 
     override fun settings() {
         size(grid.width.toInt(), grid.height.toInt())
@@ -25,12 +25,12 @@ class SnakeRunner : PApplet() {
 
         // Updates
         background(51)
-        snake.update()
+        snake.update(this)
 
         // Draw
-        grid.show()
-        snakeFoodRepository.drawFoods()
-        snake.show()
+        grid.show(this)
+        snakeFoodRepository.drawFoods(this)
+        snake.show(this)
     }
 
     override fun keyPressed() = when (keyCode) {

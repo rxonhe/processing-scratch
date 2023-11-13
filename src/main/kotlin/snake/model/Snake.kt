@@ -2,22 +2,36 @@ package snake.model
 
 import processing.core.PApplet
 import processing.core.PApplet.constrain
+import snake.repository.SnakeFoodRepository
 
 data class Snake(
-    private val applet: PApplet,
     private val moveSpeed: Float,
     private val bodySize: Float = 20f,
-    private val bodyColor: Int = applet.color(255f, 255f, 255f),
-    private val headColor: Int = applet.color(0f, 255f, 0f),
+    private val bodyColor: Triple<Float, Float, Float> = Triple(0f, 255f, 0f),
+    private val headColor: Triple<Float, Float, Float> = Triple(255f, 255f, 255f),
     private val body: MutableList<SnakeBody> = mutableListOf(SnakeBody(0f, 0f, bodySize)),
 ) {
 
     private var xSpeed = 1f
     private var ySpeed = 0f
 
-    fun show() {
+    fun show(applet: PApplet) {
         body.forEachIndexed { index, body ->
-            applet.fill(if (index == 0) headColor else bodyColor)
+            applet.fill(
+                if (index == 0) {
+                    applet.color(
+                        headColor.first,
+                        headColor.second,
+                        headColor.third,
+                    )
+                } else {
+                    applet.color(
+                        bodyColor.first,
+                        bodyColor.second,
+                        bodyColor.third,
+                    )
+                },
+            )
             applet.rect(body.x, body.y, body.bodySize, body.bodySize)
         }
     }
@@ -27,9 +41,9 @@ data class Snake(
         this.ySpeed = ySpeed
     }
 
-    fun update() {
+    fun update(applet: PApplet) {
         val head = body.first()
-        val (constrainedX, constrainedY) = calcNewHeadPos(head)
+        val (constrainedX, constrainedY) = calcNewHeadPos(head, applet)
         val newHead = head.copy(x = constrainedX, y = constrainedY)
         body.add(0, newHead)
         body.removeLast()
@@ -46,7 +60,7 @@ data class Snake(
         }
     }
 
-    private fun calcNewHeadPos(head: SnakeBody): Pair<Float, Float> {
+    private fun calcNewHeadPos(head: SnakeBody, applet: PApplet): Pair<Float, Float> {
         val x = head.x + (xSpeed * moveSpeed)
         val y = head.y + (ySpeed * moveSpeed)
         val constrainedX = constrain(x, 0f, applet.width - bodySize)

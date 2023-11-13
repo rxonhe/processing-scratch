@@ -1,9 +1,9 @@
-package snake.model
+package snake.repository
 
 import processing.core.PApplet
+import snake.model.Grid
 
 data class SnakeFoodRepository(
-    val applet: PApplet,
     val gridReference: Grid,
     val foodSize: Float = 20f,
 ) {
@@ -15,7 +15,7 @@ data class SnakeFoodRepository(
         currentFoods.add(SnakeFood(x, y, foodSize))
     }
 
-    fun drawFoods() {
+    fun drawFoods(applet: PApplet) {
         currentFoods.forEach { food ->
             applet.fill(255f, 0f, 0f)
             applet.rect(food.x, food.y, food.foodSize, food.foodSize)
