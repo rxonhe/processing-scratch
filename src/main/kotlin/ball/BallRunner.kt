@@ -1,6 +1,7 @@
 package ball
 
 import ball.repository.BallRepository
+import ball.resources.GREEN
 import ball.resources.HEIGHT
 import ball.resources.WIDTH
 import processing.core.PApplet
@@ -32,5 +33,13 @@ class BallRunner : PApplet() {
     override fun keyPressed() = when (keyCode) {
         KeyEvent.VK_ENTER -> ballRepository.createRandomBall()
         else -> Unit
+    }
+
+    override fun mousePressed() {
+        when (mouseButton) {
+            LEFT -> ballRepository.createBallAt(mouseX.toFloat(), mouseY.toFloat(), GREEN)
+            RIGHT -> ballRepository.removeBallAt(mouseX.toFloat(), mouseY.toFloat())
+            else -> Unit
+        }
     }
 }
