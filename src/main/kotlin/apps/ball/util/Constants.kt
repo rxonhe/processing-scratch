@@ -1,4 +1,4 @@
-package apps.ball.resources
+package apps.ball.util
 
 const val WIDTH: Float = 1200f
 const val HEIGHT: Float = 1200f

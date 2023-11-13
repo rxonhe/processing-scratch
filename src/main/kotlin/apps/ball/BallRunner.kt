@@ -1,9 +1,9 @@
 package apps.ball
 
 import apps.ball.repository.BallRepository
-import apps.ball.resources.GREEN
-import apps.ball.resources.HEIGHT
-import apps.ball.resources.WIDTH
+import apps.ball.util.GREEN
+import apps.ball.util.HEIGHT
+import apps.ball.util.WIDTH
 import common.Slider
 import processing.core.PApplet
 import java.awt.event.KeyEvent

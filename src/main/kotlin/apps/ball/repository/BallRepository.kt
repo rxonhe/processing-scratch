@@ -1,11 +1,11 @@
 package apps.ball.repository
 
-import apps.ball.core.Ball
-import apps.ball.resources.HEIGHT
-import apps.ball.resources.MAX_RADIUS
-import apps.ball.resources.MIN_RADIUS
-import apps.ball.resources.RED
-import apps.ball.resources.WIDTH
+import apps.ball.model.Ball
+import apps.ball.util.HEIGHT
+import apps.ball.util.MAX_RADIUS
+import apps.ball.util.MIN_RADIUS
+import apps.ball.util.RED
+import apps.ball.util.WIDTH
 import processing.core.PApplet.constrain
 import processing.core.PApplet.dist
 
