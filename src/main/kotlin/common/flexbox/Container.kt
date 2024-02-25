@@ -40,4 +40,7 @@ abstract class Container : Component() {
         }
     }
 
+    fun <T : Component> children(createComponent: () -> T) {
+        children.add(createComponent())
+    }
 }

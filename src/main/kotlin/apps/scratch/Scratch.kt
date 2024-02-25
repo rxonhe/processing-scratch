@@ -18,13 +18,16 @@ class Scratch : PApplet() {
             width = WIDTH
             backgroundColor = color(255, 0, 0)
             padding = padding(10F)
-            children = mutableSetOf(
+            children {
                 column {
                     relativeHeight = Relative.PARENT_HEIGHT
                     relativeWidth = Relative.PARENT_WIDTH
                     backgroundColor = color(0, 255, 0)
+                    children = mutableSetOf(
+
+                    )
                 }
-            )
+            }
         }.show(this)
     }
 
