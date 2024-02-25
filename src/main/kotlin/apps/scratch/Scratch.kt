@@ -23,9 +23,6 @@ class Scratch : PApplet() {
                     relativeHeight = Relative.PARENT_HEIGHT
                     relativeWidth = Relative.PARENT_WIDTH
                     backgroundColor = color(0, 255, 0)
-                    children = mutableSetOf(
-
-                    )
                 }
             }
         }.show(this)
