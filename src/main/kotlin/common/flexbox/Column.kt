@@ -8,9 +8,9 @@ import common.flexbox.properties.Margin
 import common.flexbox.properties.Padding
 
 data class Column(
-    override var width: Float,
-    override var height: Float,
-    override var children: Collection<Component> = emptySet(),
+    override var width: Float = 0F,
+    override var height: Float = 0F,
+    override var children: MutableCollection<Component> = mutableSetOf(),
     override var padding: Padding = Padding(0F, 0F, 0F, 0F),
     override var margin: Margin = Margin(0F, 0F, 0F, 0F),
     override var backgroundColor: Int = 0,
@@ -24,4 +24,4 @@ data class Column(
 ) : Container()
 
 
-fun column(block: Column.() -> Unit): Column = Column(0F, 0F).apply(block)
+fun column(block: Column.() -> Unit): Column = Column().apply(block)

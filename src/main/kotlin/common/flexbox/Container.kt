@@ -3,13 +3,12 @@ package common.flexbox
 import common.Component
 import common.flexbox.properties.Margin
 import common.flexbox.properties.Padding
+import common.flexbox.properties.Relative
 import processing.core.PApplet
 
 abstract class Container : Component() {
 
-    abstract var width: Float
-    abstract var height: Float
-    abstract var children: Collection<Component>
+    abstract var children: MutableCollection<Component>
     abstract var padding: Padding
     abstract var margin: Margin
     abstract var backgroundColor: Int
@@ -31,7 +30,14 @@ abstract class Container : Component() {
             borderRadius
         )
         applet.popStyle()
-        children.forEach { it.show(applet) }
+        applet.translate(padding.left, padding.top)
+        children.forEach {
+
+            if (it.relativeWidth == Relative.PARENT_WIDTH) it.width = width - padding.left - padding.right
+            if (it.relativeHeight == Relative.PARENT_HEIGHT) it.height = height - padding.top - padding.bottom
+
+            it.show(applet)
+        }
     }
 
 }
