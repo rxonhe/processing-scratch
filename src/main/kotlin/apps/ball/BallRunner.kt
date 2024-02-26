@@ -2,8 +2,8 @@ package apps.ball
 
 import apps.ball.repository.BallRepository
 import apps.ball.util.GREEN
-import apps.ball.util.HEIGHT
-import apps.ball.util.WIDTH
+import apps.ball.util.APP_HEIGHT
+import apps.ball.util.APP_WIDTH
 import common.Slider
 import processing.core.PApplet
 import java.awt.event.KeyEvent
@@ -13,7 +13,7 @@ class BallRunner : PApplet() {
     private val slider = Slider(100f, 100f, 100f)
 
     override fun settings() {
-        size(WIDTH.toInt(), HEIGHT.toInt())
+        size(APP_WIDTH.toInt(), APP_HEIGHT.toInt())
     }
 
     override fun setup() {
@@ -24,7 +24,7 @@ class BallRunner : PApplet() {
 
         // Updates
         background(51)
-        line(0f, 200f, WIDTH, 200f)
+        line(0f, 200f, APP_WIDTH, 200f)
         slider.update(mouseX.toFloat(), mousePressed)
 
         // Draw

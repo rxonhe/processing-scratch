@@ -1,7 +1,7 @@
 package apps.scratch
 
-import apps.ball.util.HEIGHT
-import apps.ball.util.WIDTH
+import apps.ball.util.APP_HEIGHT
+import apps.ball.util.APP_WIDTH
 import common.flexbox.column
 import common.flexbox.properties.Relative
 import common.flexbox.properties.padding
@@ -14,8 +14,8 @@ class Scratch : PApplet() {
 
     private fun show() {
         column {
-            height = HEIGHT
-            width = WIDTH
+            height = APP_HEIGHT
+            width = APP_WIDTH
             backgroundColor = color(255, 0, 0)
             padding = padding(10F)
             children {
@@ -49,7 +49,7 @@ class Scratch : PApplet() {
     }
 
     override fun settings() {
-        size(WIDTH.toInt(), HEIGHT.toInt())
+        size(APP_WIDTH.toInt(), APP_HEIGHT.toInt())
     }
 
     override fun draw() {

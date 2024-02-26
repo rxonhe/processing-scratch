@@ -1,11 +1,11 @@
 package apps.ball.repository
 
 import apps.ball.model.Ball
-import apps.ball.util.HEIGHT
+import apps.ball.util.APP_HEIGHT
 import apps.ball.util.MAX_RADIUS
 import apps.ball.util.MIN_RADIUS
 import apps.ball.util.RED
-import apps.ball.util.WIDTH
+import apps.ball.util.APP_WIDTH
 import processing.core.PApplet.constrain
 import processing.core.PApplet.dist
 
@@ -13,8 +13,8 @@ data class BallRepository(
     val balls: MutableSet<Ball> = mutableSetOf(),
     val safeAreaSize: Float = 200f,
 ) {
-    private val width = WIDTH
-    private val height = HEIGHT
+    private val width = APP_WIDTH
+    private val height = APP_HEIGHT
     private val minX: Int = 0
     private val minY: Int = 0 + safeAreaSize.toInt()
 

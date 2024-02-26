@@ -1,7 +1,7 @@
 package apps.ball.util
 
-const val WIDTH: Float = 1200f
-const val HEIGHT: Float = 1200f
+const val APP_WIDTH: Float = 1200f
+const val APP_HEIGHT: Float = 1200f
 
 const val MAX_RADIUS: Float = 100f
 const val MIN_RADIUS: Float = 10f

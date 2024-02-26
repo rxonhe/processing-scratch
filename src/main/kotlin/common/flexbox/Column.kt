@@ -20,7 +20,7 @@ data class Column(
     var flex: Float = 1F,
     var justifyContent: JustifyContent = JustifyContent.FLEX_START,
     var alignItems: AlignItems = AlignItems.STRETCH,
-    var flexDirection: FlexDirection = FlexDirection.ROW
+    var flexDirection: FlexDirection = FlexDirection.COLUMN
 ) : Container()
 
 
